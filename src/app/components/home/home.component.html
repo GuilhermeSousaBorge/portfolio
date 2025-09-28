@@ -12,22 +12,47 @@
     <!-- Hero -->
     <div class="hero" id="sobre">
       <section>
-        <img ngSrc="assets/image.png" width="500" height="500" alt="Minha foto" />
+        <img
+          ngSrc="assets/image.png"
+          width="500"
+          height="500"
+          alt="Minha foto"
+        />
       </section>
-    
+
       <section class="hero-text">
         <span class="title">Desenvolvedor Front-End</span>
         <span class="subtitle">Olá, me chamo Guilherme</span>
-        <span class="tagline">De ideias a experiências: construo interfaces modernas e responsivas, focadas no usuário.</span>
-    
+        <span class="tagline"
+          >De ideias a experiências: construo interfaces modernas e responsivas,
+          focadas no usuário.</span
+        >
+
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/guilherme-sousa-borges-99a182166/" target="_blank" rel="noopener noreferrer">
-            <img src="assets/linkedin.svg" alt="LinkedIn" width="32" height="32" />
+          <a
+            href="https://www.linkedin.com/in/guilherme-sousa-borges-99a182166/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="assets/linkedin.svg"
+              alt="LinkedIn"
+              width="32"
+              height="32"
+            />
           </a>
-          <a href="https://github.com/GuilhermeSousaBorge" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/GuilhermeSousaBorge"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src="assets/github.svg" alt="GitHub" width="32" height="32" />
           </a>
-          <a href="https://gitlab.com/guilhermepllay157" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://gitlab.com/guilhermepllay157"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src="assets/gitlab.svg" alt="GitLab" width="32" height="32" />
           </a>
         </div>
@@ -42,63 +67,100 @@
           <img ngSrc="assets/html.svg" width="100" height="100" alt="HTML5" />
           <figcaption>HTML5</figcaption>
         </figure>
-    
+
         <figure>
           <img ngSrc="assets/css.svg" width="100" height="100" alt="CSS3" />
           <figcaption>CSS3</figcaption>
         </figure>
-    
+
         <figure>
-          <img ngSrc="assets/javascript.svg" width="100" height="100" alt="JavaScript" />
+          <img
+            ngSrc="assets/javascript.svg"
+            width="100"
+            height="100"
+            alt="JavaScript"
+          />
           <figcaption>JavaScript</figcaption>
         </figure>
-    
+
         <figure>
           <img ngSrc="assets/react.svg" width="100" height="100" alt="React" />
           <figcaption>React</figcaption>
         </figure>
-    
+
         <figure>
-          <img ngSrc="assets/angular.svg" width="100" height="100" alt="Angular" />
+          <img
+            ngSrc="assets/angular.svg"
+            width="100"
+            height="100"
+            alt="Angular"
+          />
           <figcaption>Angular</figcaption>
         </figure>
-    
+
         <figure>
-          <img ngSrc="assets/github.svg" width="100" height="100" alt="GitHub" />
+          <img
+            ngSrc="assets/github.svg"
+            width="100"
+            height="100"
+            alt="GitHub"
+          />
           <figcaption>GitHub</figcaption>
         </figure>
-    
+
         <figure>
-          <img ngSrc="assets/gitlab.svg" width="100" height="100" alt="GitLab" />
+          <img
+            ngSrc="assets/gitlab.svg"
+            width="100"
+            height="100"
+            alt="GitLab"
+          />
           <figcaption>GitLab</figcaption>
         </figure>
-    
+
         <figure>
           <img ngSrc="assets/git.svg" width="100" height="100" alt="Git" />
           <figcaption>Git</figcaption>
         </figure>
-    
+
         <figure>
           <img ngSrc="assets/figma.svg" width="100" height="100" alt="Figma" />
           <figcaption>Figma</figcaption>
         </figure>
-    
+
         <figure>
-          <img ngSrc="assets/docker.svg" width="100" height="100" alt="Docker" />
+          <img
+            ngSrc="assets/docker.svg"
+            width="100"
+            height="100"
+            alt="Docker"
+          />
           <figcaption>Docker</figcaption>
         </figure>
       </div>
     </section>
-    
 
     <!-- Projetos -->
     <section class="projects" id="projects">
       <h2>Projetos</h2>
-      <p>Em breve você vai ver alguns dos meus projetos aqui 😎</p>
+      <!-- <p>Em breve você vai ver alguns dos meus projetos aqui 😎</p> -->
+      <section class="projects-container">
+        @for (item of repos; track item.id) {
+        <div class="project-card">
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description || "Sem descrição 😅" }}</p>
+          <p><strong>Linguagem:</strong> {{ item.language }}</p>
+          <a [href]="item.html_url" target="_blank">🔗 Ver no GitHub</a>
+          @if (item.homepage) {
+          <a [href]="item.homepage" target="_blank">🌐 Demo</a>
+          } @else() {
+          <span>Site indisponível</span>
+          }
+        </div>
+        }
+      </section>
     </section>
   </main>
 
-  <footer>
-    © 2025 Guilherme - Todos os direitos reservados
-  </footer>
+  <footer>© 2025 Guilherme - Todos os direitos reservados</footer>
 </body>

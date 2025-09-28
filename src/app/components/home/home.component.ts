@@ -1,5 +1,7 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GithubDto } from '../../DTO/github-dto';
+import { GithubService } from '../../service/github-service.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,16 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  repos: GithubDto[] = [];
+  
+  constructor(private githubService: GithubService){ }
+
+  ngOnInit(): void {
+    this.githubService.getRepos().subscribe((data: GithubDto[]) => {
+      this.repos = data.filter(repo => !repo.fork)
+    })
+  }
   scrollTo(section: string) {
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
   }
