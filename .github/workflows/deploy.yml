@@ -3,31 +3,36 @@ name: Deploy Angular to GitHub Pages
 on:
   push:
     branches:
-      - main  # ou master, se sua branch principal for essa
-  workflow_dispatch:
+      - main  # Garante que o deploy rode no push para a branch principal
+  workflow_dispatch: # Permite a execução manual
+
 permissions:
+  # Permissão essencial para que o GITHUB_TOKEN possa fazer o commit na branch gh-pages
   contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout repository
+      - name: 1. Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: 2. Build & Deploy com Action Dedicada ao Angular
+        # Esta Action é projetada para Angular e usa o angular-cli-ghpages internamente
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v2.0.0 
         with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Angular app
-        run: npx ng build --configuration production --base-href "/portfolio/"
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/portfolio
+          # Deve ser o caminho de saída (outputPath) do seu angular.json
+          angular_dist_build_folder: dist/portfolio 
+          
+          # Seu base-href (conforme informado)
+          base_href: /portfolio/ 
+          
+          # Configuração de build
+          build_configuration: production 
+          
+          # O token é injetado automaticamente pelo GitHub
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # A branch para onde a action irá fazer o deploy (o padrão do GitHub Pages)
+          deploy_branch: gh-pages
