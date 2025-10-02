@@ -13,7 +13,7 @@ import { GithubService } from '../../service/github-service.service';
 export class HomeComponent implements OnInit{
   repos: GithubDto[] = [];
   
-  constructor(private githubService: GithubService){ }
+  constructor(private readonly githubService: GithubService){ }
 
   ngOnInit(): void {
     this.githubService.getRepos().subscribe((data: GithubDto[]) => {
@@ -22,5 +22,9 @@ export class HomeComponent implements OnInit{
   }
   scrollTo(section: string) {
     document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  getRepoUrl(item: GithubDto){
+    return `https://${item.owner.login}.github.io/${item.name}/`
   }
 }

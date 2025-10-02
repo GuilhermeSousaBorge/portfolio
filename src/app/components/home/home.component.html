@@ -143,7 +143,6 @@
     <!-- Projetos -->
     <section class="projects" id="projects">
       <h2>Projetos</h2>
-      <!-- <p>Em breve você vai ver alguns dos meus projetos aqui 😎</p> -->
       <section class="projects-container">
         @for (item of repos; track item.id) {
         <div class="project-card">
@@ -151,8 +150,8 @@
           <p>{{ item.description || "Sem descrição 😅" }}</p>
           <p><strong>Linguagem:</strong> {{ item.language }}</p>
           <a [href]="item.html_url" target="_blank">🔗 Ver no GitHub</a>
-          @if (item.homepage) {
-          <a [href]="item.homepage" target="_blank">🌐 Demo</a>
+          @if (item.has_pages) {
+          <a [href]="getRepoUrl(item)" target="_blank">🌐 Demo</a>
           } @else() {
           <span>Site indisponível</span>
           }
