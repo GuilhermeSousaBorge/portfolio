@@ -20,7 +20,7 @@ jobs:
 
       - name: 2. Build & Deploy com Action Dedicada ao Angular
         # Esta Action é projetada para Angular e usa o angular-cli-ghpages internamente
-        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v2.0.0 
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@latest 
         with:
           # Deve ser o caminho de saída (outputPath) do seu angular.json
           angular_dist_build_folder: dist/portfolio 
