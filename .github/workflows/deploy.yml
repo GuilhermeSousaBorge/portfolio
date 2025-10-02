@@ -21,7 +21,7 @@ jobs:
         uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.4.0 
         with:
           # Deve ser o caminho de saída (outputPath) do seu angular.json
-          angular_dist_build_folder: dist/portfolio 
+          angular_dist_build_folder: dist/portfolio/browser 
           
           # Seu base-href (conforme informado)
           base_href: /portfolio/ 
