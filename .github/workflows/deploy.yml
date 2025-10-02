@@ -15,9 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: 1. Checkout repository
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v3
       - name: 2. Build & Deploy com Action Dedicada ao Angular
         # Esta Action é projetada para Angular e usa o angular-cli-ghpages internamente
         uses: AhsanAyaz/angular-deploy-gh-pages-actions@latest 
