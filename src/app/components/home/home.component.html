@@ -151,9 +151,11 @@
           <p><strong>Linguagem:</strong> {{ item.language }}</p>
           <a [href]="item.html_url" target="_blank">🔗 Ver no GitHub</a>
           @if (item.has_pages) {
-          <a [href]="getRepoUrl(item)" target="_blank">🌐 Demo</a>
-          } @else() {
-          <span>Site indisponível</span>
+          <a [href]="getRepoUrl(item)" target="_blank">Confira a demo</a>
+          } @else if(item.homepage) {
+            <a [href]=item.homepage target="_blank">Confira a demo</a>
+          } @else(){
+            <span>Site indisponível</span>
           }
         </div>
         }
