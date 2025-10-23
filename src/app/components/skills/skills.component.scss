@@ -1,0 +1,36 @@
+.skills {
+    height: 100vh;
+    background: #1e293b;
+    text-align: center;
+    margin-top: 32px;
+  }
+  
+  .skills-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    text-align: center;
+  
+    figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 120px;
+  
+      img {
+        transition: transform 0.2s ease;
+      }
+  
+      img:hover {
+        transform: scale(1.1);
+      }
+  
+      figcaption {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #eaeaea;
+      }
+    }
+  }
+  

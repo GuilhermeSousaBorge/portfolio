@@ -1,17 +1,16 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { GithubDto } from '../../DTO/github-dto';
 import { GithubService } from '../../service/github-service.service';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-projects',
   standalone: true,
-  imports: [NgOptimizedImage],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  imports: [],
+  templateUrl: './projects.component.html',
+  styleUrl: './projects.component.scss'
 })
-export class HomeComponent implements OnInit{
-  repos: GithubDto[] = [];
+export class ProjectsComponent implements OnInit{
+repos: GithubDto[] = [];
   
   constructor(private readonly githubService: GithubService){ }
 
